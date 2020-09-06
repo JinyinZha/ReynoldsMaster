@@ -8,12 +8,12 @@ from utils import lr1d
 from utils import cubic1d
 
 #Hello
-print("Welcome to use ReynoldsMaster! This Program is developed by Jinyin Zha.\nIt helps you to do a Reynold correction.")
+print("Welcome to use ReynoldsMaster! This Program is developed by Jinyin Zha and Hongxin Yang.\nIt helps you to do a Reynold correction.")
 
 while True:
     
     #1, Get Input
-    str_data=input("Please input the temperatures (Celsius). Split temperatures by spaces.\nAn easier way to do it is firstly to tap temperatures into Excel (in a line) and then copy them here.\nInput 'exit' to exit.\n")
+    str_data=input("Please input the temperatures (Celsius). Split temperatures by spaces.\nInput 'exit' to exit.\n")
     if str_data=="exit":
         print("Bye!")
         break
