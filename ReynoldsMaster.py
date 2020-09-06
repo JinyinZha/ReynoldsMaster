@@ -3,9 +3,9 @@ Created on Sat Aug 29 16:32:11 2020
 
 @author: Jinyin Zha
 """
-import scipy.interpolate as ip
 import matplotlib.pyplot as plt
-import scipy.stats as st
+from utils import lr1d
+from utils import cubic1d
 
 #Hello
 print("Welcome to use ReynoldsMaster! This Program is developed by Jinyin Zha.\nIt helps you to do a Reynold correction.")
@@ -90,6 +90,12 @@ while True:
     end_data=data[end_point:data_num]
     end_time=time[end_point:data_num]
     
+    # def interp1d_cubic(x, y):
+    #     h = []
+    #     for i in range(1, len(x)):
+    #         h.append(x[i] - x[i-1])
+    #     a = y
+
     
     #4, Interpolation for all the data
     ft=[]
@@ -97,12 +103,15 @@ while True:
     while i<=(data_num-1)*dt:
         ft.append(i)
         i+=0.001
-    ipp=ip.interp1d(time,data,kind="cubic")
-    fi=ipp(ft)
+    # ipp=ip.interp1d(time,data,kind="cubic")
+    # fi=ipp(ft)
+    fi = cubic1d(time,data, ft)
     
     #5, Liner Regression of begin and end       
-    kb,bb,rb,pb,eb=st.linregress(begin_time,begin_data)
-    ke,be,re,pe,ee=st.linregress(end_time,end_data)
+    # kb,bb,rb,pb,eb=st.linregress(begin_time,begin_data)
+    # ke,be,re,pe,ee=st.linregress(end_time,end_data)
+    kb, bb = lr1d(begin_time,begin_data)
+    ke, be = lr1d(end_time,end_data)
     
 
     #6, Get Tm and tm
